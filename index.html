@@ -5,17 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Nine sayings from the oldest text of the Way. One at a time.">
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
-<meta name="googlebot" content="noindex, nofollow">
-<meta name="CCBot" content="noindex, nofollow">
-<meta name="GPTBot" content="noindex, nofollow">
-<meta name="ClaudeBot" content="noindex, nofollow">
-<meta name="PerplexityBot" content="noindex, nofollow">
 <title>The Way</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='10' fill='none' stroke='%238A8A86' stroke-width='1.2'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300&display=optional">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300&display=optional" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400&family=Inter:wght@300&display=optional">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400&family=Inter:wght@300&display=optional" rel="stylesheet">
 <style>
   *, *::before, *::after {
     box-sizing: border-box;
@@ -28,7 +23,6 @@
     --verse:  #1A1A18;
     --accent: #8A8A86;
     --meta:   #AEAEA8;
-    --warm:   #3E1E00;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -58,7 +52,6 @@
     max-width: 640px;
     width: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 4rem 0 3rem;
@@ -67,32 +60,32 @@
   .verse {
     text-align: center;
     opacity: 0;
-    animation: rise 0.9s ease forwards 0.3s;
+    animation: appear 0.9s ease forwards 0.3s;
   }
 
   .verse-text {
     font-size: clamp(1.45rem, 4vw, 2.05rem);
     font-weight: 400;
     line-height: 1.78;
-    color: var(--verse);
     letter-spacing: 0.01em;
     font-style: italic;
   }
 
-  .verse-text em {
+  .verse-text .key {
     font-style: normal;
-    font-weight: 400;
   }
 
   footer {
-    width: 100%;
-    max-width: 640px;
-    padding: 1.4rem 0 1.8rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.4rem 1.5rem;
     display: flex;
     justify-content: center;
     gap: 2rem;
     opacity: 0;
-    animation: rise 0.8s ease forwards 0.9s;
+    animation: appear 0.8s ease forwards 0.9s;
   }
 
   footer span {
@@ -113,9 +106,9 @@
     color: var(--accent);
   }
 
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(5px); }
-    to   { opacity: 1; transform: translateY(0); }
+  @keyframes appear {
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -126,13 +119,7 @@
   }
 
   @media (max-width: 480px) {
-    footer {
-      gap: 0;
-      flex-direction: column;
-      align-items: center;
-      row-gap: 0.6rem;
-      padding-bottom: 2.2rem;
-    }
+    footer { gap: 1.2rem; padding: 1.2rem 1rem; }
   }
 </style>
 </head>
@@ -140,7 +127,7 @@
 
 <main>
   <div class="verse">
-    <p class="verse-text" id="verse-text" aria-label="A saying from the Way"></p>
+    <p class="verse-text" id="verse-text"></p>
   </div>
 </main>
 
@@ -155,7 +142,7 @@
     "The way that can be named is not the way that has no end. The name that can be said is not the name that was before all things.",
     "The highest good is like water. Water helps all living things and does not fight for its place. It goes to the low places that men do not want. In this way, it is near to the Way.",
     "Knowing others is being bright. Knowing yourself is being wise. Winning over others takes force. Winning over yourself takes true power.",
-    "Look at it — you will not see it. Its name is: <em>the without form.</em> Listen to it — you will not hear it. Its name is: <em>the without sound.</em> Take hold of it — you will not get it. Its name is: <em>the without body.</em> These three cannot be made clear by asking more questions.",
+    "Look at it — you will not see it. Its name is: <span class=\"key\">the without form.</span> Listen to it — you will not hear it. Its name is: <span class=\"key\">the without sound.</span> Take hold of it — you will not get it. Its name is: <span class=\"key\">the without body.</span> These three cannot be made clear by asking more questions.",
     "The Way gives birth to one. One gives birth to two. Two gives birth to three. Three gives birth to ten thousand things. Ten thousand things carry the dark on their back and hold the light in their arms. The meeting of these two makes the thing that keeps all living.",
     "To learn, add something every day. To follow the Way, take something away every day. Take away, and take away again, until you get to doing nothing. When you do nothing, nothing is left without doing.",
     "The great Way is very open. People keep to the small roads on the sides. When the court is bright and clean, the fields are full of weeds and the storerooms are without food. To put on bright and beautiful clothes, to carry sharp arms, to eat and drink more than enough — this is the way of those who take from others. It is not the Way.",
@@ -163,8 +150,16 @@
     "A man who is alive is soft and full. A man who is dead is hard and dry. Green plants are soft and full of water. Dead plants are dry and hard. So the hard and strong are with death. The soft and the giving are with life."
   ];
 
-  document.getElementById('verse-text').innerHTML =
-    verses[Math.floor(Math.random() * verses.length)];
+  const KEY = 'the-way-seen';
+  let seen = JSON.parse(sessionStorage.getItem(KEY) || '[]');
+  const remaining = verses.map((_, i) => i).filter(i => !seen.includes(i));
+  const pool = remaining.length > 0 ? remaining : verses.map((_, i) => i);
+  if (remaining.length === 0) sessionStorage.setItem(KEY, '[]');
+  const pick = pool[Math.floor(Math.random() * pool.length)];
+  seen = remaining.length > 0 ? seen : [];
+  seen.push(pick);
+  sessionStorage.setItem(KEY, JSON.stringify(seen));
+  document.getElementById('verse-text').innerHTML = verses[pick];
 </script>
 </body>
 </html>
