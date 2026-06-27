@@ -11,9 +11,11 @@
 <meta name="ClaudeBot" content="noindex, nofollow">
 <meta name="PerplexityBot" content="noindex, nofollow">
 <title>The Way</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='10' fill='none' stroke='%238A8A86' stroke-width='1.2'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300&display=optional">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Inter:wght@300&display=optional" rel="stylesheet">
 <style>
   *, *::before, *::after {
     box-sizing: border-box;
@@ -21,15 +23,14 @@
     padding: 0;
   }
 
-  /* Light: cool mist, deep charcoal text */
   :root {
     --bg:     #F4F4F2;
     --verse:  #1A1A18;
     --accent: #8A8A86;
     --meta:   #AEAEA8;
+    --warm:   #3E1E00;
   }
 
-  /* Dark: deep slate, bright ash text */
   @media (prefers-color-scheme: dark) {
     :root {
       --bg:     #1C1C1A;
@@ -48,29 +49,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     min-height: 100vh;
-    padding: 2rem 1.5rem 5rem;
+    padding: 0 1.5rem;
   }
 
   main {
+    flex: 1;
     max-width: 640px;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-
-  .mark {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 300;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 3.5rem;
-    opacity: 0;
-    animation: rise 0.8s ease forwards 0.1s;
+    justify-content: center;
+    padding: 4rem 0 3rem;
   }
 
   .verse {
@@ -94,11 +85,9 @@
   }
 
   footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 1.4rem 1.5rem;
+    width: 100%;
+    max-width: 640px;
+    padding: 1.4rem 0 1.8rem;
     display: flex;
     justify-content: center;
     gap: 2rem;
@@ -130,14 +119,20 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .mark, .verse, footer {
+    .verse, footer {
       animation: none;
       opacity: 1;
     }
   }
 
   @media (max-width: 480px) {
-    footer { gap: 1.2rem; padding: 1.2rem 1rem; }
+    footer {
+      gap: 0;
+      flex-direction: column;
+      align-items: center;
+      row-gap: 0.6rem;
+      padding-bottom: 2.2rem;
+    }
   }
 </style>
 </head>
@@ -151,7 +146,7 @@
 
 <footer>
   <span>Basic English · 850 words</span>
- <span>Nothing kept · Nothing watched</span>
+  <span>Nothing kept · Nothing watched</span>
   <span><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">Public domain · CC0 1.0</a></span>
 </footer>
 
